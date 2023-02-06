@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+#header {
+    background-color: #0A2342;
+    height: 30px;
+}
+
+#rest {
+    display: flex;
+    height: 100vh;
+}
+
+#week {
+    width: 70%;
+}
+
+#config {
+    background-color: #FFFDF7;
+    padding: 10px;
+    width: 30%;
+}
+
+#newCurso {
+    display: flex;
+    flex-direction: column;
+}
+
+#palCheckbox {
+    display: flex;
+    flex-direction: row;
+}
+
+#materiasDisponibles {
+    width: 100%;
+}
+.dayContainer {
+    width: 15%;
+}
+
+button {
+    background-color: #2CA58D;
+    color: white;
+    font-family: Helvetica;
+    text-align: left;
+    padding: 10px;
+    width: 300px;
+}
+
+button:hover{
+    cursor: pointer;
+
+}
+
+input[type="text"], input[type="time"]{
+    background-color: #F4F4F4;
+    width: 100%;
+}
+
+.textInputContainer {
+    display: flex;
+    flex-direction: row;
+    height: 20px;
+    vertical-align: center;
+}
+
+.inputTextDiv {
+    flex: 1;
+}

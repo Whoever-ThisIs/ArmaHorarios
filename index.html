@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Acomoda Horarios</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="header"></div>
+    <div id="rest">
+        <div id="week"></div>
+        <div id="config">
+            <div>
+                <div>
+                    <form id="newMateria">
+                        <div class="textInputContainer">
+                            <div>Nombre de la materia: </div>
+                            <div class="inputTextDiv"><input type="text" id="textNewMateria"></div>
+                        </div>
+                    </form>
+                    <button onclick="otraClase(materias, cursos)" type="button" name="button" id="a">Aniadir Materia</button>
+                </div>
+                <div id="paCursos">
+                    <form id="newCurso">
+                        <div class="textInputContainer">
+                            <div>Docente: </div>
+                            <div class="inputTextDiv"><input type="text" id="nameNewCurso"></div>
+                        </div>
+
+                        <div class="textInputContainer">
+                            <div>Hora de inicio: </div>
+                            <div class="inputTextDiv"><input type="time" id="horaInicio"></div>
+                        </div>
+                        <div class="textInputContainer">
+                            <div>Hora de fin: </div>
+                            <div class="inputTextDiv"><input type="time" id="horaFin"></div>
+                        </div>
+                        <div id="palCheckbox">
+                            Dias:
+                            <div class="dayContainer"><input type="checkbox" class="dias" value="Lu"> Lu </div>
+                            <div class="dayContainer"><input type="checkbox" class="dias" value="Ma"> Ma </div>
+                            <div class="dayContainer"><input type="checkbox" class="dias" value="Mi"> Mi </div>
+                            <div class="dayContainer"><input type="checkbox" class="dias" value="Ju"> Ju </div>
+                            <div class="dayContainer"><input type="checkbox" class="dias" value="Vi"> Vi </div>
+                            <div class="dayContainer"><input type="checkbox" class="dias" value="Sa"> Sa </div>
+                            <div class="dayContainer"><input type="checkbox" class="dias" value="Do"> Do </div>
+                        </div>
+                        <div class="textInputContainer">
+                            <div>Materias: </div>
+                            <div class="inputTextDiv">
+                                <select id="materiasDisponibles"></select>
+                            </div>
+                        </div>
+                    </form>
+                    <button onclick="otroCurso(cursos, materias)" type="button" name="button" id="b">Aniadir Curso</button>
+                </div>
+            </div>
+            <div id="todasMaterias">
+
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
