@@ -7,7 +7,8 @@ class Materia {
 }
 
 class Curso {
-    constructor(docente, horaInicio, horaFinal, dias=[], materia, active) {
+    constructor(id, docente, horaInicio, horaFinal, dias=[], materia, active) {
+        this.id = id
         this.docente = docente;
         this.horaInicio = horaInicio;
         this.horaFinal = horaFinal;
@@ -18,10 +19,45 @@ class Curso {
 }
 
 let texto, horaInicio, horaFin, i, j, k;
+let cont_cursos = 1;
 let materias = [];
 let cursos = [];
 
+function union(set1, set2) {
+    let tempArray = set1;
 
+    for (let v_set2 of set2) for (let v_temp of tempArray) if (v_set2 !== v_temp) tempArray.push(v_set2);
+
+    return tempArray
+}
+
+function intersection(set1, set2) {
+    let tempArray = [];
+
+    for (let v_set1 of set1) for (let v_set2 of set2) if (v_set1 === v_set2) tempArray.push(v_set1);
+
+    return tempArray
+}
+
+function neighbour (P, v) {
+    let neighArray = [];
+    for (let vs of P) if (vs.docente !== P[v].docente) if (vs.horaFinal <= P[v].horaInicio || P[v].horaFinal <= vs.horaInicio) neighArray.push(vs);
+    return neighArray
+}
+function BK(R = [], P = [], X = []) {
+
+    if (P.length === 0 && X.length ===0) return R
+
+    for (let v of P) {
+        let R_rec = R;
+        let P_rec = P;
+        let X_rec = X;
+        BK (union(R_rec,v), intersection(P_rec, neighbour(P_rec,v)), intersection(X_rec, neighbour(P_rec,v)));
+        // P = P \ v
+        X_rec = union(X_rec, v);
+    }
+
+}
 function actualizarMaterias(materias, cursos) {
     var todasMaterias = '', materiasDisponibles = '',tempi;
 
@@ -76,7 +112,8 @@ function otroCurso(cursos, materias) {
     var days = document.getElementsByClassName("dias");
     for (var c of days) { if (c.checked) { dias.push(c.value) } }
     let materiaDelCurso = document.getElementById("materiasDisponibles").value;
-    cursos.push(new Curso(texto, horaInicio, horaFin, dias, materiaDelCurso, true));
+    cursos.push(new Curso(cont_cursos, texto, horaInicio, horaFin, dias, materiaDelCurso, true));
+    cont_cursos++;
     materias[materiaDelCurso].options.push(cursos.length - 1);
     actualizarMaterias(materias, cursos);
     console.log(JSON.stringify(cursos));
