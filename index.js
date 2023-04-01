@@ -23,7 +23,9 @@ let cont_cursos = 1;
 let materias = [];
 let cursos = [];
 
-function union(set1, set2) {
+
+
+/*function union(set1, set2) {
     let tempArray = set1;
 
     for (let v_set2 of set2) for (let v_temp of tempArray) if (v_set2 !== v_temp) tempArray.push(v_set2);
@@ -57,7 +59,8 @@ function BK(R = [], P = [], X = []) {
         X_rec = union(X_rec, v);
     }
 
-}
+}*/
+
 function actualizarMaterias(materias, cursos) {
     var todasMaterias = '', materiasDisponibles = '',tempi;
 
@@ -84,7 +87,7 @@ function actualizarMaterias(materias, cursos) {
                     }
                 }
 
-                todosCursos += `<div id="${i}#${j}">Docente: ${cursos[tempi].docente} de ${cursos[tempi].horaInicio} a ${cursos[tempi].horaInicio} los dias ${diasDeClase} </div>`
+                todosCursos += `<div id="${i}#${j}">Docente: ${cursos[tempi].docente} de ${cursos[tempi].horaInicio} a ${cursos[tempi].horaFinal} los dias ${diasDeClase} </div>`
             }
         }
 
@@ -116,6 +119,35 @@ function otroCurso(cursos, materias) {
     cont_cursos++;
     materias[materiaDelCurso].options.push(cursos.length - 1);
     actualizarMaterias(materias, cursos);
-    console.log(JSON.stringify(cursos));
-    console.log(JSON.stringify(materias));
+    //console.log(JSON.stringify(cursos));
+    //console.log(JSON.stringify(materias));
+}
+
+function calcularCalendarios(cursos, materias) {
+    let edgesArray = [], usados = [];
+    for (let a = 0; a < cursos.length; a++) {
+        for (let b = 1 + a; b < cursos.length; b++) {
+            let tempArreglo = [];
+            let mismosDias = false;
+            //TODO arreglar lo de los diferentes dias, encontrar una manera de mostrar todo en un calendario, y mostrar todas las opciones resultado del bk en calendarios tambien. en ese punto seria la primera iteracion funcional
+
+            for (let diasA of cursos[a].dias) for (let diasB of cursos[b].dias) if ((diasA === diasB)) mismosDias = true;
+
+            if (mismosDias) if (cursos[b].horaFinal <= cursos[a].horaInicio || cursos[a].horaFinal <= cursos[b].horaInicio) {
+                tempArreglo.push(a);
+                tempArreglo.push(b);
+                //usados.push(a);
+                //usados.push(b);
+                edgesArray.push(tempArreglo);
+                console.log(edgesArray)
+            } else {
+                tempArreglo.push(a);
+                tempArreglo.push(b);
+                edgesArray.push(tempArreglo);
+                console.log(edgesArray)
+            }
+        }
+    }
+
+    console.log(BronKerbosch(edgesArray))
 }

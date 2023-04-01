@@ -37,13 +37,13 @@
                         </div>
                         <div id="palCheckbox">
                             Dias:
-                            <div class="dayContainer"><input type="checkbox" class="dias" value="Lu"> Lu </div>
-                            <div class="dayContainer"><input type="checkbox" class="dias" value="Ma"> Ma </div>
-                            <div class="dayContainer"><input type="checkbox" class="dias" value="Mi"> Mi </div>
-                            <div class="dayContainer"><input type="checkbox" class="dias" value="Ju"> Ju </div>
-                            <div class="dayContainer"><input type="checkbox" class="dias" value="Vi"> Vi </div>
-                            <div class="dayContainer"><input type="checkbox" class="dias" value="Sa"> Sa </div>
-                            <div class="dayContainer"><input type="checkbox" class="dias" value="Do"> Do </div>
+                            <div class="dayContainer"><input type="checkbox" class="dias" value="Lunes"> Lu </div>
+                            <div class="dayContainer"><input type="checkbox" class="dias" value="Martes"> Ma </div>
+                            <div class="dayContainer"><input type="checkbox" class="dias" value="Miercoles"> Mi </div>
+                            <div class="dayContainer"><input type="checkbox" class="dias" value="Jueves"> Ju </div>
+                            <div class="dayContainer"><input type="checkbox" class="dias" value="Viernes"> Vi </div>
+                            <div class="dayContainer"><input type="checkbox" class="dias" value="Sabado"> Sa </div>
+                            <div class="dayContainer"><input type="checkbox" class="dias" value="Domingo"> Do </div>
                         </div>
                         <div class="textInputContainer">
                             <div>Materias: </div>
@@ -53,6 +53,7 @@
                         </div>
                     </form>
                     <button onclick="otroCurso(cursos, materias)" type="button" name="button" id="b">Aniadir Curso</button>
+                    <button onclick="calcularCalendarios(cursos, materias)" type="button" name="button" id="cc">Obtener resultados</button>
                 </div>
             </div>
             <div id="todasMaterias">
@@ -60,6 +61,7 @@
             </div>
         </div>
     </div>
+    <script src="https://unpkg.com/@seregpie/bron-kerbosch"></script>
     <script src="index.js"></script>
 </body>
 </html>
